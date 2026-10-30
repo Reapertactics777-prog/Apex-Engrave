@@ -3,15 +3,23 @@ from pathlib import Path
 
 import streamlit as st
 import streamlit.components.v1 as components
+from PIL import Image
+
+ROOT = Path(__file__).parent
+
+# Browser tab icon: your JPG from the assets folder (falls back to an emoji if not found)
+try:
+    ICON = Image.open(ROOT / "assets" / "IMG-20261028-WA0027.jpg")
+except Exception:
+    ICON = "🪵"
 
 st.set_page_config(
     page_title="Apex Engraving",
-    page_icon="🪵",
+    page_icon=ICON,
     layout="wide",
     initial_sidebar_state="collapsed",
 )
 
-ROOT = Path(__file__).parent
 IMAGES = {
     "LOGO": ("logo.png", "image/png"),
     "P1": ("p1.jpg", "image/jpeg"),
